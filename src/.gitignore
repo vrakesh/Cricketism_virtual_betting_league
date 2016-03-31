@@ -1,0 +1,4 @@
+*.pyc
+__pycache__
+migrations
+cricketism_bet/settings.py

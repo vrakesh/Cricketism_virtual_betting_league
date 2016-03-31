@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<h1 class="text-center">{% trans "Sign Out" %}</h1>
+
+<p class="text-center">{% trans 'Are you sure you want to sign out?' %}</p>
+
+<form method="post" class="form-horizontal form-signin" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <center><button type="submit" class="btn btn-custom">{% trans 'Sign Out' %}</button></center>
+</form>
+<center><img src="{% static "assets/img/cric-logo2.png" %}" style="max-width:250px; margin-top: 12px;"></center>
+
+
+{% endblock %}

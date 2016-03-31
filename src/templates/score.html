@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SL.NO</th>
+            <th>USER</th>
+            <th>SCORE</th>
+        </tr>
+    </thead>
+    <tbody class="ttbody">
+    {% for score in scores %}
+    <tr>
+        <td>{{score.serial}}</td>
+        <td>{{score.user}}</td>
+        <td>{{score.score}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

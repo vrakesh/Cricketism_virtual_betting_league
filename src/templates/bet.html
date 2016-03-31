@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+{% for match in matches %}
+<input type="hidden" value={{match.id}}-{{match.bet}}-{{match.betp}}  class="stored"/>
+{% endfor %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SL.NO</th>
+            <th>MATCH</th>
+            <th>DATE</th>
+            <th>ODDS</th>
+            <th>POINTS</th>
+            <th>RESULT</th>
+            {% if user == "vrakesh" and match.color == "danger" %}
+            <th>UPDATE</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody class="ttbody">
+    {% for match in matches %}
+    <tr class="{{match.color}}" id={{match.id}}>
+            <td>{{match.id}}</td>
+            {% with match.home|add:" vs "|add:match.away as fixture %}
+            <td>{{fixture}}</td>
+            {% endwith %}
+            <td>{{match.day}}</td>
+            <td id="odds{{match:id}}">{{match.home_odds}}:{{match.away_odds}}</td>
+            {% with match.home|add:"-10" as home10 %}
+            {% with match.home|add:"-20" as home20 %}
+            {% with match.home|add:"-30" as home30 %}
+            {% with match.home|add:"-50" as home50 %}
+            {% with match.away|add:"-10" as away10 %}
+            {% with match.away|add:"-20" as away20 %}
+            {% with match.away|add:"-30" as away30 %}
+            {% with match.away|add:"-50" as away50 %}
+            <td><select class="{{match.color}}" >
+                    <option value={{home10}} id={{match.id}}-{{home10}}>{{home10}}</option>
+                    <option value={{home20}} id={{match.id}}-{{home20}}>{{home20}}</option>
+                    <option value={{home30}} id={{match.id}}-{{home30}}>{{home30}}</option>
+                    <option value={{home50}} id={{match.id}}-{{home50}}>{{home50}}</option>
+                    <option value={{away50}} id={{match.id}}-{{away50}}>{{away50}}</option>
+                    <option value={{away10}} id={{match.id}}-{{away10}}>{{away10}}</option>
+                    <option value={{away20}} id={{match.id}}-{{away20}}>{{away20}}</option>
+                    <option value={{away30}} id={{match.id}}-{{away30}}>{{away30}}</option></select><p>{{match.bet}} {{match.betp}}</p></td>
+            {% if match.result != "None" %}
+            <td id="result{{match.id}}">{{match.result}}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            {% if user == "vrakesh" and match.color == "danger" %}
+            <td><input type="button"  class="btn btn-custom homewin" name="{{match.home}}-{{match.id}}"  value={{match.home}}>  <input type="button"  class="btn btn-custom awaywin" name="{{match.away}}-{{match.id}}" value={{match.away}}></td>
+            {% endif %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+        </tr>
+        
+    {% endfor %}
+    </tbody>
+</table>
+<input type="button" id="save" class="btn btn-inverse" value="Save"/>{% csrf_token %}
+<p id="error"></p>
+{% endblock %}
