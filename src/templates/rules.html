@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% csrf_token %}
+<p><b><h2>GAMEPLAY RULES:</h2></b></p>
+<p><ol type="1">
+    <li>For each game one can bet <b>10,20,30 or 50 points</b> for either side</li>
+    <li>Every player can bid 50 on a team <b>Five times</b> for the entire tournament</li>
+    <li>If you bet on the loosing side, you loose points equivalent to the points you bet</li>
+    <li>If you bet on the winning side, you gain (betting_points) * (loosing_side_odds/winning_side_odds)</li>
+</ol></p>
+<p><b><h2>SAVE TIPS AND SUGGESTIONS</h2></b></p>
+<p><ol type="1">
+    <li>When you change the points, it instantly saves</li>
+    <li>There are two elements in the UI, a drop box and label below that</li>
+    <li>The dropbox always defaults to "home-side"-"10" and the label is the actual saved value</li>
+</ol></p>
+{% endblock %}

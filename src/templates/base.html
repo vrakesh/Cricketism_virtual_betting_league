@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load swampdragon_tags %}
 <head>
 
     <meta charset="utf-8">
@@ -162,7 +163,7 @@ background: rgb(240, 234, 234);
     <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
 
     <!-- Custom Scripts -->
-    <script src="{% static "assets/js/reserve.js" %}"></script>
+    <script src="{% static "assets/js/betlock.js" %}"></script>
 </head>
 
 <body>
@@ -190,8 +191,10 @@ background: rgb(240, 234, 234);
                         <a href="/bet/">Bet</a>
                     </li>
                     <li>
-                        <a href ="/Score/">Score</a>>
+                        <a href ="/score/">Score</a>>
                     <li>
+                    <li>
+                        <a href="/rules/">Rules</a>
                     <li>
                         <a href='/accounts/logout/'>Logout</a>
                     </li>
@@ -216,7 +219,9 @@ background: rgb(240, 234, 234);
     <!-- /div -->
     <!-- /.container -->
 
-
+<!-- SwampDragon -->
+{% swampdragon_settings %}
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
 
 </body>
 

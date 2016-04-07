@@ -1,0 +1,11 @@
+{% if 'rakesh.nvasudev' not in  user.email %}
+   <html>
+    <head><title>Forbidden</title>
+    </head>
+    <body><h1> Forbidden to access this page</h1></body>
+    </html>
+{% else %}
+{% include 'invitations/forms/actual_invite.html' %}
+
+
+{% endif %}

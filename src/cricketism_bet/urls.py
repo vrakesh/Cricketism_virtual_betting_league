@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^invitations/', include('invitations.urls', namespace='invitations')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^bet/','cricketism_bet.views.home'),
+    url(r'^bet/',include('bet.urls')),
+    url(r'^score/$','cricketism_bet.views.score'),
+    url(r'^rules/$','cricketism_bet.views.rules'),
 ]

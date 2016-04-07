@@ -1,0 +1,15 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}
+
+Hello,
+
+You ({{ email }}) have been invited to join Cricketism virtual betting league
+
+If you'd like to join, please go to 
+
+{{invite_url}}
+Regards,
+Cricketism Team
+{% endblocktrans %}
+{% endautoescape %}
