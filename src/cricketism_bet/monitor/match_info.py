@@ -24,13 +24,11 @@ def broadcast_match_info():
         dd_str = None
         if(timezone.now() > fixture.match_day):
             dd_str = "Locked"
+            match_status['color'+str(match.match_id)] = 'danger'
         else: 
             dd_str = "%sd:%sh:%sm:%ss" %(str(dd.days),str((dd.seconds//3600)%24),str((dd.seconds%3600)//60), str((dd.seconds%3600)%60),)
-        match_status['time_left'+str(match.match_id)] = dd_str
-        if(fixture.match_day > timezone.now()):
             match_status['color'+str(match.match_id)] = 'success'
-        else:
-            match_status['color'+str(match.match_id)] = 'danger'
+        match_status['time_left'+str(match.match_id)] = dd_str
         if(r.result != 'None'):
             match_status['color'+str(match.match_id)] = 'info'
         match_status['storedbet'+str(match.id)] = "%s %s" %(match.betting_side, match.betting_points,)
