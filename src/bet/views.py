@@ -108,7 +108,7 @@ def update(request,match_id):
     for match in user_matches:
         if(match.bet_50 == 1):
             fifty_counter +=1
-    if (fifty_counter > 5):
+    if (fifty_counter >= 5 and betting_points==50):
         return HttpResponse("Error you have bid 50 more than 5 times")
     user_match.save()
     fixture.save()
